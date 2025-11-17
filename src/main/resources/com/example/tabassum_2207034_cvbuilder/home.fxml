@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.geometry.Insets?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tabassum_2207034_cvbuilder.HomeController">
     <top>
         <VBox spacing="8" styleClass="header">
