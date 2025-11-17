@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tabassum_2207034_cvbuilder.HomeController">
+    <top>
+        <VBox spacing="8" styleClass="header">
+            <Label text="CV Builder" styleClass="app-title"/>
+            <Separator/>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Text fx:id="welcomeText" wrappingWidth="600" textAlignment="CENTER"/>
+            <Button fx:id="createBtn" text="Create New CV" onAction="#onCreateNewCV" styleClass="primary-button"/>
+        </VBox>
+    </center>
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+</BorderPane>
