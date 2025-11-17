@@ -15,7 +15,10 @@
 
     <center>
         <ScrollPane fitToWidth="true">
-            <VBox spacing="12" padding="12">
+            <VBox spacing="12">
+                <padding>
+                    <Insets top="12" right="12" bottom="12" left="12"/>
+                </padding>
                 <GridPane hgap="12" vgap="8">
                     <columnConstraints>
                         <ColumnConstraints percentWidth="20"/>
@@ -36,8 +39,7 @@
                 </GridPane>
 
                 <HBox spacing="20">
-                    <VBox spacing="8">
-                        <prefWidth>60%</prefWidth>
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
                         <Label text="Education" styleClass="subsection"/>
                         <VBox fx:id="educationBox" spacing="8"/>
                         <Button fx:id="addEducationBtn" text="Add Education" onAction="#onAddEducation" styleClass="small-button"/>
