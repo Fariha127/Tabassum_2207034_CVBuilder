@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tabassum_2207034_cvbuilder.CreateController">
+    <top>
+        <VBox spacing="6">
+            <Label text="Create Your CV" styleClass="section-title"/>
+            <Separator/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="12" padding="12">
+                <GridPane hgap="12" vgap="8">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="20"/>
+                        <ColumnConstraints percentWidth="80"/>
+                    </columnConstraints>
+
+                    <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="fullNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="emailField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Phone:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="phoneField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <Label text="Address:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextArea fx:id="addressArea" prefRowCount="2" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <HBox spacing="20">
+                    <VBox spacing="8">
+                        <prefWidth>60%</prefWidth>
+                        <Label text="Education" styleClass="subsection"/>
+                        <VBox fx:id="educationBox" spacing="8"/>
+                        <Button fx:id="addEducationBtn" text="Add Education" onAction="#onAddEducation" styleClass="small-button"/>
+                    </VBox>
+
+                </HBox>
+
+                <VBox spacing="8">
+                    <Label text="Work Experience" styleClass="subsection"/>
+                    <VBox fx:id="experienceBox" spacing="8"/>
+                    <Button fx:id="addExperienceBtn" text="Add Experience" onAction="#onAddExperience" styleClass="small-button"/>
+                </VBox>
+
+                <GridPane hgap="12" vgap="8">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="20"/>
+                        <ColumnConstraints percentWidth="80"/>
+                    </columnConstraints>
+
+                    <Label text="Skills (comma separated):" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextArea fx:id="skillsArea" prefRowCount="2" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Projects (one per line):" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextArea fx:id="projectsArea" prefRowCount="3" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="cancelBtn" text="Cancel" onAction="#onCancel"/>
+                    <Button fx:id="generateBtn" text="Generate CV" onAction="#onGenerate" styleClass="primary-button"/>
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <padding>
+        <Insets top="10" right="12" bottom="10" left="12"/>
+    </padding>
+</BorderPane>
