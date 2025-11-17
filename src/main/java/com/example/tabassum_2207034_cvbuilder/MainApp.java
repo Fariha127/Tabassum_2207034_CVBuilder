@@ -54,6 +54,21 @@ public class MainApp extends Application {
         }
     }
 
+    public void showPreview(CVModel model) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tabassum_2207034_cvbuilder/preview.fxml"));
+            Parent root = loader.load();
+            com.example.tabassum_2207034_cvbuilder.PreviewController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setModel(model);
+            Scene scene = new Scene(root, 1000, 700);
+            scene.getStylesheets().add(getClass().getResource("/com/example/tabassum_2207034_cvbuilder/style.css").toExternalForm());
+            primaryStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
