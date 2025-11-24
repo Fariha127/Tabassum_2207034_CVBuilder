@@ -3,8 +3,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
-
 <?import javafx.geometry.Insets?>
+
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tabassum_2207034_cvbuilder.HomeController">
     <top>
         <VBox spacing="8" styleClass="header">
@@ -13,9 +13,30 @@
         </VBox>
     </top>
     <center>
-        <VBox alignment="CENTER" spacing="20">
-            <Text fx:id="welcomeText" wrappingWidth="600" textAlignment="CENTER"/>
-            <Button fx:id="createBtn" text="Create New CV" onAction="#onCreateNewCV" styleClass="primary-button"/>
+        <VBox spacing="20">
+            <VBox alignment="CENTER" spacing="15">
+                <Text fx:id="welcomeText" wrappingWidth="600" textAlignment="CENTER"/>
+                <HBox spacing="15" alignment="CENTER">
+                    <Button fx:id="createBtn" text="Create New CV" onAction="#onCreateNewCV" styleClass="primary-button"/>
+                    <Button fx:id="viewRecordsBtn" text="View Saved Records" onAction="#onViewRecords" styleClass="primary-button"/>
+                </HBox>
+            </VBox>
+            
+            <VBox spacing="10">
+                <Label text="Saved CV Records" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="cvTableView" prefHeight="300">
+                    <columns>
+                        <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                        <TableColumn fx:id="nameColumn" text="Full Name" prefWidth="250"/>
+                        <TableColumn fx:id="emailColumn" text="Email" prefWidth="250"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="previewBtn" text="Preview" onAction="#onPreviewCV"/>
+                    <Button fx:id="editBtn" text="Edit" onAction="#onEditCV"/>
+                    <Button fx:id="deleteBtn" text="Delete" onAction="#onDeleteCV"/>
+                </HBox>
+            </VBox>
         </VBox>
     </center>
     <padding>

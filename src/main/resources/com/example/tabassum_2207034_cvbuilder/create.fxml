@@ -68,7 +68,8 @@
 
                 <HBox spacing="10" alignment="CENTER_RIGHT">
                     <Button fx:id="cancelBtn" text="Cancel" onAction="#onCancel"/>
-                    <Button fx:id="generateBtn" text="Generate CV" onAction="#onGenerate" styleClass="primary-button"/>
+                    <Button fx:id="saveBtn" text="Save to Database" onAction="#onSave" styleClass="primary-button"/>
+                    <Button fx:id="generateBtn" text="Preview CV" onAction="#onGenerate" styleClass="primary-button"/>
                 </HBox>
 
             </VBox>
