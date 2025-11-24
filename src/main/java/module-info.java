@@ -10,6 +10,9 @@ module com.example.tabassum_2207034_cvbuilder {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    
+    // Database
+    requires java.sql;
 
     opens com.example.tabassum_2207034_cvbuilder to javafx.fxml;
     exports com.example.tabassum_2207034_cvbuilder;
