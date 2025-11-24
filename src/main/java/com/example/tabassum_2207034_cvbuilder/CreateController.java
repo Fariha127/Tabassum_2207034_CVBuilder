@@ -23,6 +23,8 @@ public class CreateController {
 
     private MainApp mainApp;
     private CVModel model = new CVModel();
+    private CVService cvService = new CVService();
+    private boolean isEditMode = false;
 
     @FXML private TextField fullNameField;
     @FXML private TextField emailField;
@@ -37,6 +39,7 @@ public class CreateController {
     @FXML private Button uploadPhotoBtn;
     @FXML private ImageView profileImageView;
     @FXML private Button generateBtn;
+    @FXML private Button saveBtn;
     @FXML private Button cancelBtn;
 
     public void setMainApp(MainApp mainApp) {
@@ -47,6 +50,7 @@ public class CreateController {
     public void setModel(CVModel model) {
         if (model == null) return;
         this.model = model;
+        this.isEditMode = (model.id > 0);
         fullNameField.setText(model.fullName);
         emailField.setText(model.email);
         phoneField.setText(model.phone);
@@ -161,7 +165,43 @@ public class CreateController {
         experienceBox.getChildren().add(gp);
     }
 
-    // alerttt er jonno method thakbe ekhanee
+    // Save CV to database
+    @FXML
+    private void onSave() {
+        if (!validate()) {
+            showErrorAlert("Validation Error", "Please fill required fields: Full Name and Email");
+            return;
+        }
+        collectToModel();
+        
+        if (isEditMode) {
+            var task = cvService.createUpdateTask(model);
+            task.setOnSucceeded(e -> {
+                if (task.getValue()) {
+                    showSuccessAlert("Success", "CV updated successfully!");
+                    mainApp.showHome();
+                } else {
+                    showErrorAlert("Error", "Failed to update CV");
+                }
+            });
+            task.setOnFailed(e -> showErrorAlert("Error", "Error: " + task.getException().getMessage()));
+            new Thread(task).start();
+        } else {
+            var task = cvService.createSaveTask(model);
+            task.setOnSucceeded(e -> {
+                int id = task.getValue();
+                if (id > 0) {
+                    model.id = id;
+                    showSuccessAlert("Success", "CV saved successfully! ID: " + id);
+                    mainApp.showHome();
+                } else {
+                    showErrorAlert("Error", "Failed to save CV");
+                }
+            });
+            task.setOnFailed(e -> showErrorAlert("Error", "Error: " + task.getException().getMessage()));
+            new Thread(task).start();
+        }
+    }
 
     @FXML
     private void onGenerate() {
